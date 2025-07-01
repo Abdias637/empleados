@@ -11,8 +11,10 @@ app.use(cors());
 app.use(express.json());
 
 // Conexión a MongoDB sin opciones deprecadas
-const MONGO_URI =
-  process.env.MONGO_URI || 'mongodb://localhost:27017/empleados';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/empleados';
+
+mongoose
+  .connect(MONGO_URI)
   .then(() => console.log('Conectado a la base de datos MongoDB'))
   .catch(err => console.error('Error al conectar a MongoDB:', err));
 
